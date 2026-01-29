@@ -1,0 +1,11 @@
+{
+  "name": "@pycolors/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": ["./tokens.css"],
+  "exports": {
+    "./tokens.css": "./tokens.css"
+  },
+  "files": ["tokens.css", "README.md"]
+}
