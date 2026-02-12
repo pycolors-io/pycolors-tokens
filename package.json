@@ -1,11 +1,32 @@
 {
   "name": "@pycolors/tokens",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.2.0",
+  "description": "CSS design tokens for PyColors (light/dark themes + semantic variables).",
+  "keywords": [
+    "pycolors",
+    "design-tokens",
+    "css-variables",
+    "tailwind",
+    "theming",
+    "dark-mode"
+  ],
+  "license": "MIT",
+  "private": false,
   "type": "module",
   "sideEffects": ["./tokens.css"],
+  "files": ["tokens.css", "README.md", "LICENSE"],
   "exports": {
     "./tokens.css": "./tokens.css"
   },
-  "files": ["tokens.css", "README.md"]
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pycolors-io/pycolors-tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/pycolors-io/pycolors-tokens/issues"
+  },
+  "homepage": "https://github.com/pycolors-io/pycolors/tree/main/packages/tokens#readme"
 }
