@@ -1,5 +1,11 @@
 # @pycolors/tokens
 
+## 1.0.0
+
+### Patch Changes
+
+- a9672fe: chore: update internal apps to use tokens v1
+
 ## 0.3.0
 
 ### Minor Changes
