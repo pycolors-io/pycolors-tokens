@@ -1,75 +1,276 @@
-/* ---------- Tokens (source of truth) ---------- */
+/* ==========================================================================
+   PyColors Tokens
+   Premium SaaS Developer Platform
+   ========================================================================== */
+
 :root {
-  --radius: 0.625rem;
+  --radius: 0px;
 
   --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.15 0.01 285);
 
-  --card: var(--background);
-  --card-foreground: var(--foreground);
-
-  --popover: var(--background);
-  --popover-foreground: var(--foreground);
-
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: var(--primary);
-
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-
-  --accent: var(--secondary);
-  --accent-foreground: var(--primary);
-
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-
-  --border: oklch(0.92 0.004 286.32);
-  --input: var(--border);
-  --ring: oklch(0.705 0.015 286.067);
-}
-
-.dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-
-  --card: oklch(0.21 0.006 285.885);
+  --card: oklch(0.99 0 0);
   --card-foreground: var(--foreground);
 
   --popover: var(--card);
   --popover-foreground: var(--foreground);
 
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
+  /* Brand */
+  --brand-primary: oklch(0.49 0.23 292);
+  --brand-primary-hover: oklch(0.45 0.23 292);
 
-  --secondary: oklch(0.274 0.006 286.033);
+  --brand-platform: #2563eb;
+  --brand-platform-hover: #1d4ed8;
+  --brand-platform-muted: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 88%
+  );
+
+  --brand-success: #16a34a;
+  --brand-success-hover: #15803d;
+  --brand-success-muted: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 88%
+  );
+
+  --brand-accent: #ff00a8;
+  --brand-accent-hover: #db0090;
+  --brand-accent-muted: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 88%
+  );
+
+  --primary: var(--brand-primary);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: var(--foreground);
 
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-
-  --accent: var(--secondary);
+  --accent: oklch(0.96 0.01 292);
   --accent-foreground: var(--foreground);
+
+  --muted: oklch(0.965 0.002 286);
+  --muted-foreground: oklch(0.55 0.015 285);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --success: var(--brand-success);
+  --warning: oklch(0.82 0.13 90);
+
+  --border: oklch(0.92 0.004 286);
+  --border-subtle: color-mix(in oklch, var(--border), transparent 38%);
+  --border-strong: color-mix(in oklch, var(--border), var(--foreground) 18%);
+
+  --input: var(--border);
+  --ring: var(--primary);
+
+  --surface: var(--card);
+  --surface-foreground: var(--card-foreground);
+  --surface-muted: color-mix(in oklch, var(--muted), transparent 42%);
+  --surface-elevated: color-mix(
+    in oklch,
+    var(--background),
+    var(--foreground) 2%
+  );
+
+  --surface-inverted: oklch(0.18 0.012 285);
+  --surface-inverted-foreground: oklch(0.985 0 0);
+
+  /* Pro / violet */
+  --pro-border: color-mix(in oklch, var(--primary), transparent 28%);
+  --pro-border-subtle: color-mix(in oklch, var(--primary), transparent 72%);
+  --pro-surface: color-mix(in oklch, var(--surface), var(--primary) 3%);
+  --pro-surface-muted: color-mix(in oklch, var(--muted), var(--primary) 5%);
+
+  /* Platform / blue */
+  --platform-border: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 42%
+  );
+  --platform-border-subtle: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 76%
+  );
+  --platform-surface-muted: var(--brand-platform-muted);
+
+  /* Success / green */
+  --success-border: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 42%
+  );
+  --success-border-subtle: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 76%
+  );
+  --success-surface-muted: var(--brand-success-muted);
+
+  /* Accent / pink */
+  --accent-border: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 42%
+  );
+  --accent-border-subtle: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 76%
+  );
+  --accent-surface-muted: var(--brand-accent-muted);
+
+  --shadow-soft: 0 10px 30px
+    color-mix(in oklch, var(--foreground), transparent 96%);
+
+  --shadow-medium: 0 20px 60px
+    color-mix(in oklch, var(--foreground), transparent 92%);
+
+  --shadow-strong: 0 30px 90px
+    color-mix(in oklch, var(--foreground), transparent 88%);
+}
+
+.dark {
+  --background: #0b0b10;
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.19 0.008 285);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  --brand-primary: oklch(0.68 0.19 292);
+  --brand-primary-hover: oklch(0.63 0.19 292);
+
+  --brand-platform: #3b82f6;
+  --brand-platform-hover: #60a5fa;
+  --brand-platform-muted: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 86%
+  );
+
+  --brand-success: #22c55e;
+  --brand-success-hover: #4ade80;
+  --brand-success-muted: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 86%
+  );
+
+  --brand-accent: #ff4dc4;
+  --brand-accent-hover: #ff79d6;
+  --brand-accent-muted: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 86%
+  );
+
+  --primary: var(--brand-primary);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.24 0.008 285);
+  --secondary-foreground: var(--foreground);
+
+  --accent: oklch(0.28 0.01 292);
+  --accent-foreground: var(--foreground);
+
+  --muted: oklch(0.24 0.008 285);
+  --muted-foreground: oklch(0.72 0.02 285);
 
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: var(--foreground);
 
+  --success: var(--brand-success);
+  --warning: oklch(0.82 0.13 90);
+
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --border-subtle: color-mix(in oklch, var(--border), transparent 25%);
+  --border-strong: color-mix(in oklch, var(--border), var(--foreground) 22%);
+
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--primary);
+
+  --surface: var(--card);
+  --surface-foreground: var(--card-foreground);
+  --surface-muted: color-mix(in oklch, var(--muted), transparent 32%);
+  --surface-elevated: color-mix(
+    in oklch,
+    var(--background),
+    var(--foreground) 6%
+  );
+
+  --surface-inverted: oklch(0.985 0 0);
+  --surface-inverted-foreground: oklch(0.18 0.012 285);
+
+  /* Pro / violet */
+  --pro-border: color-mix(in oklch, var(--primary), transparent 22%);
+  --pro-border-subtle: color-mix(in oklch, var(--primary), transparent 68%);
+  --pro-surface: color-mix(in oklch, var(--surface), var(--primary) 6%);
+  --pro-surface-muted: color-mix(in oklch, var(--muted), var(--primary) 7%);
+
+  /* Platform / blue */
+  --platform-border: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 36%
+  );
+  --platform-border-subtle: color-mix(
+    in oklch,
+    var(--brand-platform),
+    transparent 72%
+  );
+  --platform-surface-muted: var(--brand-platform-muted);
+
+  /* Success / green */
+  --success-border: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 36%
+  );
+  --success-border-subtle: color-mix(
+    in oklch,
+    var(--brand-success),
+    transparent 72%
+  );
+  --success-surface-muted: var(--brand-success-muted);
+
+  /* Accent / pink */
+  --accent-border: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 36%
+  );
+  --accent-border-subtle: color-mix(
+    in oklch,
+    var(--brand-accent),
+    transparent 72%
+  );
+  --accent-surface-muted: var(--brand-accent-muted);
+
+  --shadow-soft: 0 10px 30px oklch(0 0 0 / 22%);
+  --shadow-medium: 0 20px 60px oklch(0 0 0 / 32%);
+  --shadow-strong: 0 30px 90px oklch(0 0 0 / 42%);
 }
 
-/* ---------- Tailwind v4 bridge (ONLY HERE) ---------- */
-@theme inline {
-  /* radius */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+/* ==========================================================================
+   Tailwind v4 bridge
+   ========================================================================== */
 
-  /* colors */
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -95,10 +296,61 @@
   --color-destructive-foreground: var(--destructive-foreground);
 
   --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* often used by shadcn patterns */
-  --color-success: var(--success, oklch(0.76 0.18 135));
-  --color-warning: var(--warning, oklch(0.85 0.12 95));
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-elevated: var(--surface-elevated);
+
+  --color-surface-inverted: var(--surface-inverted);
+  --color-surface-inverted-foreground: var(--surface-inverted-foreground);
+
+  --color-pro-border: var(--pro-border);
+  --color-pro-border-subtle: var(--pro-border-subtle);
+  --color-pro-surface: var(--pro-surface);
+  --color-pro-surface-muted: var(--pro-surface-muted);
+
+  --color-platform: var(--brand-platform);
+  --color-platform-hover: var(--brand-platform-hover);
+  --color-platform-muted: var(--brand-platform-muted);
+  --color-platform-border: var(--platform-border);
+  --color-platform-border-subtle: var(--platform-border-subtle);
+  --color-platform-surface-muted: var(--platform-surface-muted);
+
+  --color-success: var(--success);
+  --color-success-hover: var(--brand-success-hover);
+  --color-success-muted: var(--brand-success-muted);
+  --color-success-border: var(--success-border);
+  --color-success-border-subtle: var(--success-border-subtle);
+  --color-success-surface-muted: var(--success-surface-muted);
+
+  --color-warning: var(--warning);
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+
+  --color-brand-platform: var(--brand-platform);
+  --color-brand-platform-hover: var(--brand-platform-hover);
+  --color-brand-platform-muted: var(--brand-platform-muted);
+
+  --color-brand-success: var(--brand-success);
+  --color-brand-success-hover: var(--brand-success-hover);
+  --color-brand-success-muted: var(--brand-success-muted);
+
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-hover: var(--brand-accent-hover);
+  --color-brand-accent-muted: var(--brand-accent-muted);
+
+  --color-accent-border: var(--accent-border);
+  --color-accent-border-subtle: var(--accent-border-subtle);
+  --color-accent-surface-muted: var(--accent-surface-muted);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-strong: var(--shadow-strong);
 }
