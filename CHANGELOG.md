@@ -1,5 +1,19 @@
 # @pycolors/tokens
 
+## 1.1.0
+
+### Minor Changes
+
+- 91e32a3: Introduce a new premium SaaS platform token architecture with:
+  - refined semantic surface tokens
+  - improved border hierarchy and contrast
+  - softer premium shadow system
+  - violet-first brand foundation
+  - platform, success, and accent semantic color roles
+  - improved dark mode consistency
+  - new Tailwind v4 theme mappings
+  - production-oriented SaaS UI foundations
+
 ## 1.0.0
 
 ### Patch Changes
