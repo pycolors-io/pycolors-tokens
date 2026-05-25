@@ -1,5 +1,14 @@
 # @pycolors/tokens
 
+## 1.2.0
+
+### Minor Changes
+
+- 8ce7ed6: Improve border radius token system with scalable relative sizing.
+
+  Replace fixed pixel radius values with relative rem-based calculations
+  driven by a base radius variable for better consistency and scalability.
+
 ## 1.1.0
 
 ### Minor Changes
