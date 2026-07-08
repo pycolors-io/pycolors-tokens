@@ -24,6 +24,9 @@
   "exports": {
     "./tokens.css": "./tokens.css"
   },
+  "scripts": {
+    "types:check": "echo \"skip: CSS-only package\""
+  },
   "publishConfig": {
     "access": "public"
   },
