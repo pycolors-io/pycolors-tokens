@@ -59,7 +59,9 @@
   --destructive-foreground: oklch(0.985 0 0);
 
   --success: var(--brand-success);
+  --success-foreground: oklch(0.17 0.02 152);
   --warning: oklch(0.82 0.13 90);
+  --warning-foreground: oklch(0.22 0.03 90);
 
   --border: oklch(0.92 0.004 286);
   --border-subtle: color-mix(in oklch, var(--border), transparent 38%);
@@ -188,7 +190,9 @@
   --destructive-foreground: var(--foreground);
 
   --success: var(--brand-success);
+  --success-foreground: oklch(0.14 0.02 152);
   --warning: oklch(0.82 0.13 90);
+  --warning-foreground: oklch(0.22 0.03 90);
 
   --border: oklch(1 0 0 / 10%);
   --border-subtle: color-mix(in oklch, var(--border), transparent 25%);
@@ -323,6 +327,7 @@
   --color-platform-surface-muted: var(--platform-surface-muted);
 
   --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
   --color-success-hover: var(--brand-success-hover);
   --color-success-muted: var(--brand-success-muted);
   --color-success-border: var(--success-border);
@@ -330,6 +335,7 @@
   --color-success-surface-muted: var(--success-surface-muted);
 
   --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
 
   --color-brand-primary: var(--brand-primary);
   --color-brand-primary-hover: var(--brand-primary-hover);
