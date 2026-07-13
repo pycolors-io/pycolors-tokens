@@ -1,6 +1,6 @@
 {
   "name": "@pycolors/tokens",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CSS design tokens for PyColors (light/dark themes + semantic variables).",
   "keywords": [
     "pycolors",
