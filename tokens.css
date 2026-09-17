@@ -53,7 +53,7 @@
   --accent-foreground: var(--foreground);
 
   --muted: oklch(0.965 0.002 286);
-  --muted-foreground: oklch(0.55 0.015 285);
+  --muted-foreground: oklch(0.53 0.015 285);
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
@@ -102,11 +102,7 @@
   --platform-surface-muted: var(--brand-platform-muted);
 
   /* Success / green */
-  --success-border: color-mix(
-    in oklch,
-    var(--brand-success),
-    transparent 42%
-  );
+  --success-border: color-mix(in oklch, var(--brand-success), transparent 42%);
   --success-border-subtle: color-mix(
     in oklch,
     var(--brand-success),
@@ -115,11 +111,7 @@
   --success-surface-muted: var(--brand-success-muted);
 
   /* Accent / pink */
-  --accent-border: color-mix(
-    in oklch,
-    var(--brand-accent),
-    transparent 42%
-  );
+  --accent-border: color-mix(in oklch, var(--brand-accent), transparent 42%);
   --accent-border-subtle: color-mix(
     in oklch,
     var(--brand-accent),
@@ -175,7 +167,7 @@
   );
 
   --primary: var(--brand-primary);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: var(--surface-inverted-foreground);
 
   --secondary: oklch(0.24 0.008 285);
   --secondary-foreground: var(--foreground);
@@ -187,7 +179,7 @@
   --muted-foreground: oklch(0.72 0.02 285);
 
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: var(--foreground);
+  --destructive-foreground: var(--surface-inverted-foreground);
 
   --success: var(--brand-success);
   --success-foreground: oklch(0.14 0.02 152);
@@ -233,11 +225,7 @@
   --platform-surface-muted: var(--brand-platform-muted);
 
   /* Success / green */
-  --success-border: color-mix(
-    in oklch,
-    var(--brand-success),
-    transparent 36%
-  );
+  --success-border: color-mix(in oklch, var(--brand-success), transparent 36%);
   --success-border-subtle: color-mix(
     in oklch,
     var(--brand-success),
@@ -246,11 +234,7 @@
   --success-surface-muted: var(--brand-success-muted);
 
   /* Accent / pink */
-  --accent-border: color-mix(
-    in oklch,
-    var(--brand-accent),
-    transparent 36%
-  );
+  --accent-border: color-mix(in oklch, var(--brand-accent), transparent 36%);
   --accent-border-subtle: color-mix(
     in oklch,
     var(--brand-accent),
