@@ -1,5 +1,14 @@
 # @pycolors/tokens
 
+## 1.2.3
+
+### Patch Changes
+
+- 78df756: Improve light muted-text contrast and use dark foregrounds on the lighter primary
+  and destructive surfaces in dark mode. Keep success, warning and destructive Toast
+  messages in the readable foreground color while retaining their semantic borders.
+  Public APIs and consumer class overrides are unchanged.
+
 ## 1.2.2
 
 ### Patch Changes
