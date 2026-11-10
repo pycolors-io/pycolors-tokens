@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "cssSource": "tokens.css",
+  "appearanceSource": "config/appearance-presets.json",
+  "cssSha256": "42d3c03b05ef8834fdbf332a32f016f693eb617fc362551eb9d93b7757a2efc2",
+  "appearanceSha256": "587de7daf7947af484daff6f2648a2855413bc8b7250a856f4c7f10412fbb144",
+  "scalesSha256": "54ef7c184a297d89c4d9910327c7bac3fad1eaec51623c1f808e602fd376735a",
+  "generatorSha256": "8ff6dcc24595ee5d7b9c2c57516f4d6839d4790484e8c031592ac9d20e4007b7",
+  "colorSpace": "srgb",
+  "gamutMapping": "constant-lightness-hue-chroma-reduction-28",
+  "packageName": "@pycolors/tokens",
+  "snapshot": "appearance.snapshot.json",
+  "formatter": "prettier@3.9.9",
+  "artifacts": {
+    "native.js": "63f02b2f9a13d292f5165e3810a20bccd8694a3e7add649dedc0295023ec7fe3",
+    "native.d.ts": "b28f254f63c2cca09f75e9de0d55e4d4822094dc00c3c48e282ee3e78b95c658"
+  },
+  "contrast": {
+    "method": "WCAG relative luminance; opaque role pairs only; not full accessibility qualification",
+    "pairsChecked": 264,
+    "failures": []
+  }
+}

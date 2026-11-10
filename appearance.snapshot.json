@@ -1,0 +1,1066 @@
+{
+  "schemaVersion": 1,
+  "semanticRoles": [
+    "background",
+    "foreground",
+    "card",
+    "card-foreground",
+    "popover",
+    "popover-foreground",
+    "primary",
+    "primary-foreground",
+    "secondary",
+    "secondary-foreground",
+    "muted",
+    "muted-foreground",
+    "accent",
+    "accent-foreground",
+    "destructive",
+    "destructive-foreground",
+    "success",
+    "success-foreground",
+    "warning",
+    "warning-foreground",
+    "border",
+    "border-subtle",
+    "border-strong",
+    "input",
+    "ring",
+    "surface",
+    "surface-foreground",
+    "surface-muted",
+    "surface-elevated",
+    "surface-inverted",
+    "surface-inverted-foreground"
+  ],
+  "palettes": [
+    {
+      "value": "monochrome",
+      "label": "Monochrome",
+      "swatches": ["#18181b", "#a1a1aa", "#ffffff"],
+      "draft": {
+        "brandColor": "#18181b",
+        "name": "Monochrome",
+        "neutralColor": "#a1a1aa",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#171717",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#737373",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#000000",
+          "foreground": "#fafafa",
+          "card": "#070707",
+          "card-foreground": "#fafafa",
+          "popover": "#111111",
+          "popover-foreground": "#fafafa",
+          "primary": "#fafafa",
+          "primary-foreground": "#000000",
+          "secondary": "#171717",
+          "secondary-foreground": "#fafafa",
+          "muted": "#111111",
+          "muted-foreground": "#a1a1a1",
+          "accent": "#1f1f1f",
+          "accent-foreground": "#fafafa",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#0a0a0a",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#191919",
+          "border-subtle": "#0f0f0f",
+          "border-strong": "#404040",
+          "input": "#404040",
+          "ring": "#a1a1a1",
+          "surface": "#070707",
+          "surface-foreground": "#fafafa",
+          "surface-muted": "#111111",
+          "surface-elevated": "#111111",
+          "surface-inverted": "#fafafa",
+          "surface-inverted-foreground": "#0a0a0a"
+        }
+      }
+    },
+    {
+      "value": "pycolors",
+      "label": "PyColors",
+      "swatches": ["#6a30d4", "#71717a", "#ffffff"],
+      "draft": {
+        "brandColor": "#6a30d4",
+        "name": "PyColors",
+        "neutralColor": "#71717a",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#6b2fd4",
+          "primary-foreground": "#fafafa",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#6b2fd4",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#0b0b10",
+          "foreground": "#fafafa",
+          "card": "#121217",
+          "card-foreground": "#fafafa",
+          "popover": "#121217",
+          "popover-foreground": "#fafafa",
+          "primary": "#9d7cff",
+          "primary-foreground": "#111117",
+          "secondary": "#1f1f23",
+          "secondary-foreground": "#fafafa",
+          "muted": "#1f1f23",
+          "muted-foreground": "#a3a3b1",
+          "accent": "#29282e",
+          "accent-foreground": "#fafafa",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#111117",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#232327",
+          "border-subtle": "#19191e",
+          "border-strong": "#504b4c",
+          "input": "#ffffff",
+          "ring": "#9d7cff",
+          "surface": "#121217",
+          "surface-foreground": "#fafafa",
+          "surface-muted": "#1f1f23",
+          "surface-elevated": "#1b1516",
+          "surface-inverted": "#fafafa",
+          "surface-inverted-foreground": "#111117"
+        }
+      }
+    },
+    {
+      "value": "lime-carbon",
+      "label": "Lime Carbon",
+      "swatches": ["#a3e635", "#181818", "#ffffff"],
+      "draft": {
+        "brandColor": "#a3e635",
+        "name": "Lime Carbon",
+        "neutralColor": "#181818",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#496d00",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#496d00",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#060606",
+          "foreground": "#f5f5f4",
+          "card": "#0d0d0d",
+          "card-foreground": "#f5f5f4",
+          "popover": "#0d0d0d",
+          "popover-foreground": "#f5f5f4",
+          "primary": "#a3e635",
+          "primary-foreground": "#111111",
+          "secondary": "#181818",
+          "secondary-foreground": "#f5f5f4",
+          "muted": "#181818",
+          "muted-foreground": "#f5f5f4",
+          "accent": "#152300",
+          "accent-foreground": "#f5f5f4",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#060606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1e1e1e",
+          "border-subtle": "#141414",
+          "border-strong": "#565655",
+          "input": "#383837",
+          "ring": "#a3e635",
+          "surface": "#060606",
+          "surface-foreground": "#f5f5f4",
+          "surface-muted": "#0d0d0d",
+          "surface-elevated": "#0d0d0d",
+          "surface-inverted": "#f5f5f4",
+          "surface-inverted-foreground": "#060606"
+        }
+      }
+    },
+    {
+      "value": "arctic-cyan",
+      "label": "Arctic Cyan",
+      "swatches": ["#06b6d4", "#64748b", "#ffffff"],
+      "draft": {
+        "brandColor": "#06b6d4",
+        "name": "Arctic Cyan",
+        "neutralColor": "#64748b",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#004c5a",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#004c5a",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#050606",
+          "foreground": "#f4f5f7",
+          "card": "#0c0d0d",
+          "card-foreground": "#f4f5f7",
+          "popover": "#0d0e0f",
+          "popover-foreground": "#f4f5f7",
+          "primary": "#22d3ee",
+          "primary-foreground": "#111111",
+          "secondary": "#1a1b1c",
+          "secondary-foreground": "#f4f5f7",
+          "muted": "#1a1b1c",
+          "muted-foreground": "#f4f5f7",
+          "accent": "#002931",
+          "accent-foreground": "#f4f5f7",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#050606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1d1e1e",
+          "border-subtle": "#131414",
+          "border-strong": "#5f6063",
+          "input": "#3d3e40",
+          "ring": "#22d3ee",
+          "surface": "#050606",
+          "surface-foreground": "#f4f5f7",
+          "surface-muted": "#0d0e0f",
+          "surface-elevated": "#0d0e0f",
+          "surface-inverted": "#f4f5f7",
+          "surface-inverted-foreground": "#050606"
+        }
+      }
+    },
+    {
+      "value": "coral-signal",
+      "label": "Coral Signal",
+      "swatches": ["#f15b50", "#78716c", "#ffffff"],
+      "draft": {
+        "brandColor": "#f15b50",
+        "name": "Coral Signal",
+        "neutralColor": "#78716c",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#741412",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#741412",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#060606",
+          "foreground": "#f5f5f5",
+          "card": "#0d0d0d",
+          "card-foreground": "#f5f5f5",
+          "popover": "#0e0e0e",
+          "popover-foreground": "#f5f5f5",
+          "primary": "#ff8a7a",
+          "primary-foreground": "#111111",
+          "secondary": "#1b1a1a",
+          "secondary-foreground": "#f5f5f5",
+          "muted": "#1b1a1a",
+          "muted-foreground": "#f5f5f5",
+          "accent": "#3d0f0c",
+          "accent-foreground": "#f5f5f5",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#060606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1e1e1e",
+          "border-subtle": "#141414",
+          "border-strong": "#60605f",
+          "input": "#3e3e3d",
+          "ring": "#ff8a7a",
+          "surface": "#060606",
+          "surface-foreground": "#f5f5f5",
+          "surface-muted": "#0e0e0e",
+          "surface-elevated": "#0e0e0e",
+          "surface-inverted": "#f5f5f5",
+          "surface-inverted-foreground": "#060606"
+        }
+      }
+    },
+    {
+      "value": "indigo-ledger",
+      "label": "Indigo Ledger",
+      "swatches": ["#4f46e5", "#64748b", "#ffffff"],
+      "draft": {
+        "brandColor": "#4f46e5",
+        "name": "Indigo Ledger",
+        "neutralColor": "#64748b",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#4f46e5",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#4f46e5",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#050606",
+          "foreground": "#f4f5f7",
+          "card": "#0c0d0d",
+          "card-foreground": "#f4f5f7",
+          "popover": "#0d0e0f",
+          "popover-foreground": "#f4f5f7",
+          "primary": "#afbaff",
+          "primary-foreground": "#111111",
+          "secondary": "#1a1b1c",
+          "secondary-foreground": "#f4f5f7",
+          "muted": "#1a1b1c",
+          "muted-foreground": "#f4f5f7",
+          "accent": "#110f40",
+          "accent-foreground": "#f4f5f7",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#050606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1d1e1e",
+          "border-subtle": "#131414",
+          "border-strong": "#5f6063",
+          "input": "#3d3e40",
+          "ring": "#afbaff",
+          "surface": "#050606",
+          "surface-foreground": "#f4f5f7",
+          "surface-muted": "#0d0e0f",
+          "surface-elevated": "#0d0e0f",
+          "surface-inverted": "#f4f5f7",
+          "surface-inverted-foreground": "#050606"
+        }
+      }
+    },
+    {
+      "value": "emerald-console",
+      "label": "Emerald Console",
+      "swatches": ["#0f9d72", "#5f6b7a", "#ffffff"],
+      "draft": {
+        "brandColor": "#0f9d72",
+        "name": "Emerald Console",
+        "neutralColor": "#5f6b7a",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#007151",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#007151",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#060606",
+          "foreground": "#f4f5f6",
+          "card": "#0d0d0d",
+          "card-foreground": "#f4f5f6",
+          "popover": "#0d0d0e",
+          "popover-foreground": "#f4f5f6",
+          "primary": "#99ddbe",
+          "primary-foreground": "#111111",
+          "secondary": "#18191a",
+          "secondary-foreground": "#f4f5f6",
+          "muted": "#18191a",
+          "muted-foreground": "#f4f5f6",
+          "accent": "#002518",
+          "accent-foreground": "#f4f5f6",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#060606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1e1e1e",
+          "border-subtle": "#141414",
+          "border-strong": "#58595a",
+          "input": "#39393b",
+          "ring": "#99ddbe",
+          "surface": "#060606",
+          "surface-foreground": "#f4f5f6",
+          "surface-muted": "#0d0d0e",
+          "surface-elevated": "#0d0d0e",
+          "surface-inverted": "#f4f5f6",
+          "surface-inverted-foreground": "#060606"
+        }
+      }
+    },
+    {
+      "value": "graphite-atlas",
+      "label": "Graphite Atlas",
+      "swatches": ["#334155", "#64748b", "#ffffff"],
+      "draft": {
+        "brandColor": "#334155",
+        "name": "Graphite Atlas",
+        "neutralColor": "#64748b",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#334155",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#334155",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#050606",
+          "foreground": "#f4f5f7",
+          "card": "#0c0d0d",
+          "card-foreground": "#f4f5f7",
+          "popover": "#0d0e0f",
+          "popover-foreground": "#f4f5f7",
+          "primary": "#a6b0c0",
+          "primary-foreground": "#111111",
+          "secondary": "#1a1b1c",
+          "secondary-foreground": "#f4f5f7",
+          "muted": "#1a1b1c",
+          "muted-foreground": "#f4f5f7",
+          "accent": "#0d1118",
+          "accent-foreground": "#f4f5f7",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#050606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1d1e1e",
+          "border-subtle": "#131414",
+          "border-strong": "#5f6063",
+          "input": "#3d3e40",
+          "ring": "#a6b0c0",
+          "surface": "#050606",
+          "surface-foreground": "#f4f5f7",
+          "surface-muted": "#0d0e0f",
+          "surface-elevated": "#0d0e0f",
+          "surface-inverted": "#f4f5f7",
+          "surface-inverted-foreground": "#050606"
+        }
+      }
+    },
+    {
+      "value": "rose-atelier",
+      "label": "Rose Atelier",
+      "swatches": ["#be185d", "#78716c", "#ffffff"],
+      "draft": {
+        "brandColor": "#be185d",
+        "name": "Rose Atelier",
+        "neutralColor": "#78716c",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#be185d",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#be185d",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#060606",
+          "foreground": "#f5f5f5",
+          "card": "#0d0d0d",
+          "card-foreground": "#f5f5f5",
+          "popover": "#0e0e0e",
+          "popover-foreground": "#f5f5f5",
+          "primary": "#ffa1b8",
+          "primary-foreground": "#111111",
+          "secondary": "#1b1a1a",
+          "secondary-foreground": "#f5f5f5",
+          "muted": "#1b1a1a",
+          "muted-foreground": "#f5f5f5",
+          "accent": "#330315",
+          "accent-foreground": "#f5f5f5",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#060606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1e1e1e",
+          "border-subtle": "#141414",
+          "border-strong": "#60605f",
+          "input": "#3e3e3d",
+          "ring": "#ffa1b8",
+          "surface": "#060606",
+          "surface-foreground": "#f5f5f5",
+          "surface-muted": "#0e0e0e",
+          "surface-elevated": "#0e0e0e",
+          "surface-inverted": "#f5f5f5",
+          "surface-inverted-foreground": "#060606"
+        }
+      }
+    },
+    {
+      "value": "amber-foundry",
+      "label": "Amber Foundry",
+      "swatches": ["#b45309", "#78716c", "#ffffff"],
+      "draft": {
+        "brandColor": "#b45309",
+        "name": "Amber Foundry",
+        "neutralColor": "#78716c",
+        "lightBackgroundColor": "#ffffff"
+      },
+      "modes": {
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#171717",
+          "card": "#fafafa",
+          "card-foreground": "#171717",
+          "popover": "#ffffff",
+          "popover-foreground": "#171717",
+          "primary": "#853a00",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f5f5f5",
+          "secondary-foreground": "#171717",
+          "muted": "#fafafa",
+          "muted-foreground": "#666666",
+          "accent": "#f5f5f5",
+          "accent-foreground": "#171717",
+          "destructive": "#e7000b",
+          "destructive-foreground": "#fafafa",
+          "success": "#16a34a",
+          "success-foreground": "#09120b",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#eaeaea",
+          "border-subtle": "#f2f2f2",
+          "border-strong": "#cfcfcf",
+          "input": "#cfcfcf",
+          "ring": "#853a00",
+          "surface": "#ffffff",
+          "surface-foreground": "#171717",
+          "surface-muted": "#fafafa",
+          "surface-elevated": "#ffffff",
+          "surface-inverted": "#171717",
+          "surface-inverted-foreground": "#ffffff"
+        },
+        "dark": {
+          "background": "#060606",
+          "foreground": "#f5f5f5",
+          "card": "#0d0d0d",
+          "card-foreground": "#f5f5f5",
+          "popover": "#0e0e0e",
+          "popover-foreground": "#f5f5f5",
+          "primary": "#f6b38f",
+          "primary-foreground": "#111111",
+          "secondary": "#1b1a1a",
+          "secondary-foreground": "#f5f5f5",
+          "muted": "#1b1a1a",
+          "muted-foreground": "#f5f5f5",
+          "accent": "#2f1101",
+          "accent-foreground": "#f5f5f5",
+          "destructive": "#ff6467",
+          "destructive-foreground": "#060606",
+          "success": "#22c55e",
+          "success-foreground": "#040b06",
+          "warning": "#e5c057",
+          "warning-foreground": "#201a09",
+          "border": "#1e1e1e",
+          "border-subtle": "#141414",
+          "border-strong": "#60605f",
+          "input": "#3e3e3d",
+          "ring": "#f6b38f",
+          "surface": "#060606",
+          "surface-foreground": "#f5f5f5",
+          "surface-muted": "#0e0e0e",
+          "surface-elevated": "#0e0e0e",
+          "surface-inverted": "#f5f5f5",
+          "surface-inverted-foreground": "#060606"
+        }
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "id": "geist",
+      "label": "Geist",
+      "family": "\"Geist\", ui-sans-serif, system-ui, sans-serif",
+      "previewFamily": "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif",
+      "asset": "/fonts/geist/Geist-Variable.woff2",
+      "weight": "100 900",
+      "license": "/fonts/geist/OFL.txt"
+    },
+    {
+      "id": "system",
+      "label": "System",
+      "family": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "previewFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "id": "mono",
+      "label": "Geist Mono",
+      "family": "\"Geist Mono\", ui-monospace, monospace",
+      "previewFamily": "var(--font-geist-mono), ui-monospace, monospace",
+      "asset": "/fonts/geist/GeistMono-Variable.woff2",
+      "weight": "100 900",
+      "license": "/fonts/geist/OFL.txt"
+    },
+    {
+      "id": "mona-sans",
+      "label": "Mona Sans",
+      "family": "\"Mona Sans\", ui-sans-serif, system-ui, sans-serif",
+      "previewFamily": "\"Mona Sans\", ui-sans-serif, system-ui, sans-serif",
+      "asset": "/fonts/Mona-Sans.var.woff2",
+      "weight": "200 900",
+      "license": "/fonts/mona-sans/OFL.txt"
+    },
+    {
+      "id": "plus-jakarta-sans",
+      "label": "Plus Jakarta Sans",
+      "family": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "previewFamily": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "asset": "/fonts/plus-jakarta-sans/latin.woff2",
+      "weight": "200 800",
+      "license": "/fonts/plus-jakarta-sans/OFL.txt"
+    }
+  ],
+  "radii": {
+    "none": "0rem",
+    "subtle": "0.25rem",
+    "medium": "0.5rem",
+    "rounded": "0.75rem",
+    "large": "1.5rem"
+  },
+  "options": {
+    "scale": [
+      {
+        "value": "100",
+        "label": "100%"
+      },
+      {
+        "value": "110",
+        "label": "110%"
+      },
+      {
+        "value": "125",
+        "label": "125%"
+      }
+    ],
+    "density": [
+      {
+        "value": "compact",
+        "label": "Compact"
+      },
+      {
+        "value": "comfortable",
+        "label": "Comfortable"
+      }
+    ],
+    "width": [
+      {
+        "value": "contained",
+        "label": "Contained"
+      },
+      {
+        "value": "full",
+        "label": "Full width"
+      }
+    ],
+    "sidebar": [
+      {
+        "value": "expanded",
+        "label": "Expanded"
+      },
+      {
+        "value": "collapsed",
+        "label": "Collapsed"
+      }
+    ],
+    "font": [
+      {
+        "value": "geist",
+        "label": "Geist"
+      },
+      {
+        "value": "system",
+        "label": "System"
+      },
+      {
+        "value": "mono",
+        "label": "Geist Mono"
+      },
+      {
+        "value": "mona-sans",
+        "label": "Mona Sans"
+      },
+      {
+        "value": "plus-jakarta-sans",
+        "label": "Plus Jakarta Sans"
+      }
+    ],
+    "radius": [
+      {
+        "value": "none",
+        "label": "None"
+      },
+      {
+        "value": "subtle",
+        "label": "SM"
+      },
+      {
+        "value": "medium",
+        "label": "MD"
+      },
+      {
+        "value": "rounded",
+        "label": "LG"
+      },
+      {
+        "value": "large",
+        "label": "XL"
+      }
+    ],
+    "sidebarVariant": [
+      {
+        "value": "panel",
+        "label": "Panel"
+      },
+      {
+        "value": "inset",
+        "label": "Inset"
+      },
+      {
+        "value": "minimal",
+        "label": "Minimal"
+      }
+    ],
+    "sidebarCollapse": [
+      {
+        "value": "hidden",
+        "label": "Hidden"
+      },
+      {
+        "value": "icons",
+        "label": "Icons"
+      }
+    ],
+    "sidebarLight": [
+      {
+        "value": "standard",
+        "label": "Standard"
+      },
+      {
+        "value": "contrast",
+        "label": "Contrast"
+      },
+      {
+        "value": "black",
+        "label": "Black"
+      }
+    ],
+    "sidebarDark": [
+      {
+        "value": "standard",
+        "label": "Standard"
+      },
+      {
+        "value": "contrast",
+        "label": "Contrast"
+      },
+      {
+        "value": "black",
+        "label": "Black"
+      }
+    ],
+    "header": [
+      {
+        "value": "sticky",
+        "label": "Sticky"
+      },
+      {
+        "value": "scroll",
+        "label": "Scroll"
+      }
+    ],
+    "motion": [
+      {
+        "value": "system",
+        "label": "System"
+      },
+      {
+        "value": "reduced",
+        "label": "Reduced"
+      }
+    ],
+    "canvas": [
+      {
+        "value": "plain",
+        "label": "Plain"
+      },
+      {
+        "value": "dots",
+        "label": "Dots"
+      }
+    ]
+  },
+  "defaults": {
+    "scale": "100",
+    "density": "compact",
+    "width": "contained",
+    "sidebar": "expanded",
+    "font": "geist",
+    "radius": "subtle",
+    "sidebarVariant": "panel",
+    "sidebarCollapse": "hidden",
+    "sidebarLight": "black",
+    "sidebarDark": "standard",
+    "header": "sticky",
+    "motion": "system",
+    "canvas": "dots"
+  }
+}

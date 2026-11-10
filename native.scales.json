@@ -1,0 +1,22 @@
+{
+  "remBase": 16,
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "xxl": 32,
+    "xxxl": 48
+  },
+  "typography": {
+    "caption": { "fontSize": 12, "lineHeight": 18, "fontWeight": "400" },
+    "label": { "fontSize": 13, "lineHeight": 20, "fontWeight": "600" },
+    "body": { "fontSize": 16, "lineHeight": 24, "fontWeight": "400" },
+    "subtitle": { "fontSize": 20, "lineHeight": 28, "fontWeight": "600" },
+    "title": { "fontSize": 28, "lineHeight": 36, "fontWeight": "700" },
+    "display": { "fontSize": 36, "lineHeight": 44, "fontWeight": "700" }
+  },
+  "touchTarget": 48,
+  "motion": { "fast": 120, "normal": 200, "slow": 320 }
+}
