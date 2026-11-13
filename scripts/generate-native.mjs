@@ -1,0 +1,317 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { format, version as formatterVersion } from "prettier";
+import {
+  contrastRatio,
+  cssVariables,
+  evaluateColor,
+  nativeHex,
+} from "./native-color.mjs";
+
+const packageDirectory = fileURLToPath(new URL("../", import.meta.url));
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const camelCase = (role) =>
+  role.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+const schemes = ["light", "dark"];
+const colorPairs = [
+  ["foreground", "background"],
+  ["cardForeground", "card"],
+  ["popoverForeground", "popover"],
+  ["primaryForeground", "primary"],
+  ["secondaryForeground", "secondary"],
+  ["mutedForeground", "muted"],
+  ["accentForeground", "accent"],
+  ["destructiveForeground", "destructive"],
+  ["successForeground", "success"],
+  ["warningForeground", "warning"],
+  ["surfaceForeground", "surface"],
+  ["surfaceInvertedForeground", "surfaceInverted"],
+];
+
+export async function buildNativeArtifacts({
+  css,
+  appearance,
+  scales,
+  generatorSource,
+  colorSource,
+}) {
+  const contract = JSON.parse(appearance);
+  const scale = JSON.parse(scales);
+  assert.equal(contract.schemaVersion, 1);
+  assert.equal(
+    new Set(contract.semanticRoles).size,
+    31,
+    "Expected the complete appearance color contract",
+  );
+  const roles = contract.semanticRoles.map(camelCase);
+  assert.equal(new Set(roles).size, roles.length);
+  const variables = cssVariables(css);
+  const nativeColors = Object.fromEntries(
+    schemes.map((scheme) => {
+      const colors = Object.fromEntries(
+        contract.semanticRoles.map((role) => {
+          assert(
+            Object.hasOwn(variables[scheme], role),
+            `Missing CSS role ${role}`,
+          );
+          return [
+            camelCase(role),
+            nativeHex(
+              evaluateColor(variables[scheme][role], variables[scheme]),
+            ),
+          ];
+        }),
+      );
+      return [scheme, { ...colors, elevated: colors.surfaceElevated }];
+    }),
+  );
+  const ids = new Set();
+  const nativePalettes = {};
+  const nativePaletteOptions = [];
+  for (const preset of contract.palettes) {
+    assert.match(preset.value, /^[a-z][a-z0-9-]+$/);
+    assert(!ids.has(preset.value), "Duplicate appearance palette");
+    ids.add(preset.value);
+    assert.equal(typeof preset.label, "string");
+    assert(Array.isArray(preset.swatches) && preset.swatches.length > 0);
+    preset.swatches.forEach((color) => assert.match(color, /^#[0-9a-f]{6}$/));
+    nativePaletteOptions.push({
+      value: preset.value,
+      label: preset.label,
+      swatches: preset.swatches,
+    });
+    nativePalettes[preset.value] = Object.fromEntries(
+      schemes.map((scheme) => {
+        assert.deepEqual(
+          Object.keys(preset.modes[scheme]),
+          contract.semanticRoles,
+        );
+        const colors = Object.fromEntries(
+          contract.semanticRoles.map((role) => {
+            const value = preset.modes[scheme][role];
+            assert.match(value, /^#[0-9a-f]{6}$/);
+            return [camelCase(role), value];
+          }),
+        );
+        return [scheme, { ...colors, elevated: colors.surfaceElevated }];
+      }),
+    );
+  }
+  assert(ids.size > 0);
+  const rem = (value) => {
+    assert.match(value, /^\d*\.?\d+rem$/);
+    return parseFloat(value) * scale.remBase;
+  };
+  assert.equal(scale.remBase, 16);
+  assert.equal(scale.touchTarget, 48);
+  const radius = rem(variables.light.radius);
+  const nativeRadius = {
+    sm: radius - 2,
+    md: radius,
+    lg: radius + 2,
+    xl: radius + 4,
+    xxl: radius + 6,
+    xxxl: radius + 8,
+    card: radius * 3,
+    modal: radius * 4,
+    pill: 9999,
+  };
+  const nativeRadiusPreferences = Object.fromEntries(
+    Object.entries(contract.radii).map(([key, value]) => [key, rem(value)]),
+  );
+  assert.deepEqual(
+    Object.keys(nativeRadiusPreferences),
+    contract.options.radius.map((option) => option.value),
+  );
+  const nativeTokenSource = {
+    schemaVersion: 1,
+    cssSource: "tokens.css",
+    appearanceSource: "config/appearance-presets.json",
+    cssSha256: sha256(css),
+    appearanceSha256: sha256(appearance),
+    scalesSha256: sha256(scales),
+    generatorSha256: sha256(generatorSource + "\n" + colorSource),
+    colorSpace: "srgb",
+    gamutMapping: "constant-lightness-hue-chroma-reduction-28",
+  };
+  const exports = {
+    nativeColors,
+    nativePalettes,
+    nativePaletteOptions,
+    nativeSpacing: scale.spacing,
+    nativeRadius,
+    nativeRadiusPreferences,
+    nativeTypography: scale.typography,
+    nativeTouchTarget: scale.touchTarget,
+    nativeMotion: scale.motion,
+    nativeTokenSource,
+  };
+  const header = "// Generated by scripts/generate-native.mjs. Do not edit.\n";
+  const javascriptSource =
+    header +
+    "// Framework-independent sRGB data; no CSS evaluation or imports at runtime.\n" +
+    'function freeze(value) {\n  if (value && typeof value === "object") {\n    Object.values(value).forEach(freeze);\n    Object.freeze(value);\n  }\n  return value;\n}\n\n' +
+    Object.entries(exports)
+      .map(
+        ([name, value]) =>
+          `export const ${name} = freeze(${JSON.stringify(value, null, 2)});\n`,
+      )
+      .join("\n");
+  const union = (name, values) =>
+    `export type ${name} =\n${values.map((value) => `  | ${JSON.stringify(value)}`).join("\n")};\n`;
+  const numeric = (name, values) =>
+    `export declare const ${name}: Readonly<{\n${Object.keys(values)
+      .map((key) => `  ${key}: number;`)
+      .join("\n")}\n}>;\n`;
+  const declarationSource =
+    header +
+    'export type NativeColorScheme = "light" | "dark";\n' +
+    union("NativePaletteName", [...ids]) +
+    union("NativeRadiusPreference", Object.keys(nativeRadiusPreferences)) +
+    `export type NativeColors = Readonly<{\n${[...roles, "elevated"].map((role) => `  ${role}: string;`).join("\n")}\n}>;\n` +
+    "export declare const nativeColors: Readonly<Record<NativeColorScheme, NativeColors>>;\n" +
+    "export declare const nativePalettes: Readonly<Record<NativePaletteName, Readonly<Record<NativeColorScheme, NativeColors>>>>;\n" +
+    "export declare const nativePaletteOptions: readonly Readonly<{\n  value: NativePaletteName;\n  label: string;\n  swatches: readonly string[];\n}>[];\n" +
+    numeric("nativeSpacing", scale.spacing) +
+    numeric("nativeRadius", nativeRadius) +
+    "export declare const nativeRadiusPreferences: Readonly<Record<NativeRadiusPreference, number>>;\n" +
+    union("NativeTypographyRole", Object.keys(scale.typography)) +
+    'export type NativeTextStyle = Readonly<{\n  fontSize: number;\n  lineHeight: number;\n  fontWeight: "400" | "500" | "600" | "700";\n}>;\n' +
+    "export declare const nativeTypography: Readonly<Record<NativeTypographyRole, NativeTextStyle>>;\n" +
+    "export declare const nativeTouchTarget: 48;\n" +
+    numeric("nativeMotion", scale.motion) +
+    'export declare const nativeTokenSource: Readonly<{\n  schemaVersion: 1;\n  cssSource: "tokens.css";\n  appearanceSource: "config/appearance-presets.json";\n  cssSha256: string;\n  appearanceSha256: string;\n  scalesSha256: string;\n  generatorSha256: string;\n  colorSpace: "srgb";\n  gamutMapping: "constant-lightness-hue-chroma-reduction-28";\n}>;\n';
+  const javascript = await format(javascriptSource, { parser: "babel" });
+  const declarations = await format(declarationSource, {
+    parser: "typescript",
+  });
+  const contrast = [];
+  for (const [name, colors] of [
+    ["base-css", nativeColors],
+    ...Object.entries(nativePalettes),
+  ]) {
+    for (const scheme of schemes) {
+      for (const [foreground, background] of colorPairs) {
+        const ratio = contrastRatio(
+          colors[scheme][foreground],
+          colors[scheme][background],
+        );
+        contrast.push({
+          palette: name,
+          scheme,
+          foreground,
+          background,
+          ratio: Math.round(ratio * 1000) / 1000,
+          target: 4.5,
+          passes: ratio >= 4.5,
+        });
+      }
+    }
+  }
+  const provenance = {
+    ...nativeTokenSource,
+    packageName: "@pycolors/tokens",
+    snapshot: "appearance.snapshot.json",
+    formatter: `prettier@${formatterVersion}`,
+    artifacts: {
+      "native.js": sha256(javascript),
+      "native.d.ts": sha256(declarations),
+    },
+    contrast: {
+      method:
+        "WCAG relative luminance; opaque role pairs only; not full accessibility qualification",
+      pairsChecked: contrast.length,
+      failures: contrast.filter((pair) => !pair.passes),
+    },
+  };
+  return new Map([
+    ["native.js", javascript],
+    ["native.d.ts", declarations],
+    ["native.provenance.json", JSON.stringify(provenance, null, 2) + "\n"],
+    ["appearance.snapshot.json", appearance],
+  ]);
+}
+
+export async function nativeArtifacts(
+  directory = packageDirectory,
+  canonicalAppearancePath,
+) {
+  // A standalone checkout must not consume an unrelated ../../config file.
+  // In the real monorepo, missing canonical input is an error, not a fallback.
+  if (
+    !canonicalAppearancePath &&
+    path.basename(directory) === "tokens" &&
+    path.basename(path.dirname(directory)) === "packages"
+  ) {
+    const repository = path.resolve(directory, "../..");
+    let manifest;
+    try {
+      manifest = JSON.parse(
+        await readFile(path.join(repository, "package.json"), "utf8"),
+      );
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+    if (manifest?.name === "pycolors" && manifest.private === true) {
+      canonicalAppearancePath = path.join(
+        repository,
+        "config/appearance-presets.json",
+      );
+    }
+  }
+  const appearance = await readFile(
+    canonicalAppearancePath ?? path.join(directory, "appearance.snapshot.json"),
+    "utf8",
+  );
+  return buildNativeArtifacts({
+    css: await readFile(path.join(directory, "tokens.css"), "utf8"),
+    appearance,
+    scales: await readFile(path.join(directory, "native.scales.json"), "utf8"),
+    generatorSource: await readFile(
+      path.join(directory, "scripts/generate-native.mjs"),
+      "utf8",
+    ),
+    colorSource: await readFile(
+      path.join(directory, "scripts/native-color.mjs"),
+      "utf8",
+    ),
+  });
+}
+
+export async function generateNative({
+  check = false,
+  directory = packageDirectory,
+  canonicalAppearancePath,
+} = {}) {
+  const artifacts = await nativeArtifacts(directory, canonicalAppearancePath);
+  for (const [name, content] of artifacts) {
+    const destination = path.join(directory, name);
+    if (check)
+      assert.equal(
+        await readFile(destination, "utf8"),
+        content,
+        `Stale native token artifact: ${name}. Run native:generate.`,
+      );
+    else await writeFile(destination, content);
+  }
+  return artifacts.size;
+}
+
+if (
+  process.argv[1] &&
+  pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url
+) {
+  assert(
+    process.argv.slice(2).every((argument) => argument === "--check"),
+    "Unknown generation argument",
+  );
+  const count = await generateNative({
+    check: process.argv.includes("--check"),
+  });
+  console.log(
+    `Native tokens: ${count} artifacts ${process.argv.includes("--check") ? "verified" : "generated"}.`,
+  );
+}

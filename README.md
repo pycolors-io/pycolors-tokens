@@ -1,160 +1,143 @@
 # @pycolors/tokens
 
-> Production-ready CSS design tokens for building consistent, scalable,
-> and modern interfaces across the PyColors ecosystem.
+Shared CSS design tokens and framework-independent native data for PyColors.
+The CSS entry point keeps its existing light/dark and Tailwind v4 behavior.
+The additive native entry point is prepared for the next minor release;
+publication remains a maintainer action.
 
-[![npm
-version](https://img.shields.io/npm/v/@pycolors/tokens)](https://www.npmjs.com/package/@pycolors/tokens)
-[![license](https://img.shields.io/npm/l/@pycolors/tokens)](LICENSE)
+## CSS usage
 
-------------------------------------------------------------------------
-
-## ✨ Why @pycolors/tokens?
-
-Design tokens are the **foundation of a scalable design system**.
-
-This package provides:
-
--   🎨 Light + dark themes out of the box
--   🧠 Semantic color variables (`--background`, `--primary`, etc.)
--   ⚡ Tailwind v4 bridge via `@theme inline`
--   🧱 Stable primitives for apps, SaaS, templates, and UI kits
--   🔁 Single source of truth across your monorepo
-
-Perfect for **Next.js**, **React**, **SaaS starters**, and **design
-systems**.
-
-------------------------------------------------------------------------
-
-## 📦 Install
-
-``` bash
+```sh
 pnpm add @pycolors/tokens
-# or
-npm install @pycolors/tokens
-# or
-yarn add @pycolors/tokens
 ```
 
-------------------------------------------------------------------------
+Import the stylesheet from your application CSS:
 
-## 🚀 Quick Start
-
-### Import the tokens CSS
-
-#### Next.js (App Router)
-
-Add to `app/globals.css`:
-
-``` css
+```css
 @import "@pycolors/tokens/tokens.css";
 ```
 
-#### Next.js (Pages Router)
+Toggle a `.dark` class on the document root to select the dark variables.
+The stylesheet includes semantic colors, surfaces, borders, radii and the
+Tailwind v4 `@theme inline` bridge. Its source values are unchanged by the
+addition of native data.
 
-``` ts
-import "@pycolors/tokens/tokens.css";
+## Native usage
+
+`@pycolors/tokens/native` is an ESM data module with TypeScript declarations.
+It imports no React, React Native, DOM, CSS, Node or application runtime.
+It does not install fonts, change system settings or manage a theme provider.
+
+```ts
+import {
+  nativeColors,
+  nativePalettes,
+  nativeRadiusPreferences,
+  nativeSpacing,
+  nativeTouchTarget,
+  nativeTypography,
+  type NativeColors,
+} from "@pycolors/tokens/native";
+
+const colors: NativeColors = {
+  ...nativeColors.dark,
+  ...nativePalettes.monochrome.dark,
+};
+
+const buttonStyle = {
+  backgroundColor: colors.primary,
+  borderRadius: nativeRadiusPreferences.subtle,
+  minHeight: nativeTouchTarget,
+  paddingHorizontal: nativeSpacing.lg,
+  paddingVertical: nativeSpacing.sm,
+};
+const labelStyle = {
+  ...nativeTypography.label,
+  color: colors.primaryForeground,
+};
 ```
 
-#### Vite / React
+Data is deeply frozen. Create a local copy to apply consumer overrides rather
+than mutating the exported theme. Color roles are typed as strings, allowing
+compatible custom palettes.
 
-``` ts
-import "@pycolors/tokens/tokens.css";
+| Export                              | Contract                                                                                                                                      |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nativeColors.light`, `.dark`       | The 31 canonical semantic roles converted from `tokens.css`, in camelCase; `elevated` aliases `surfaceElevated`.                              |
+| `nativePalettes[id].light`, `.dark` | Complete appearance presets with the same role names. Every preset color and foreground is preserved from the shared Web appearance contract. |
+| `nativePaletteOptions`              | Palette IDs, labels and swatches for a consumer-owned selection UI.                                                                           |
+| `nativeSpacing`                     | `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `xxxl`: 4, 8, 12, 16, 24, 32, 48.                                                                        |
+| `nativeRadius`                      | CSS-derived base radii plus native `card`, `modal` and `pill` sizes.                                                                          |
+| `nativeRadiusPreferences`           | Shared Web choices: `none: 0`, `subtle: 4`, `medium: 8`, `rounded: 12`, `large: 24`.                                                          |
+| `nativeTypography`                  | `caption`, `label`, `body`, `subtitle`, `title`, `display`; each provides `fontSize`, `lineHeight`, `fontWeight`.                             |
+| `nativeTouchTarget`                 | Minimum interactive target size: 48 logical units.                                                                                            |
+| `nativeMotion`                      | `fast: 120`, `normal: 200`, `slow: 320` milliseconds. Consumers must honor reduced-motion preferences.                                        |
+| `nativeTokenSource`                 | Input hashes, source names, color space and conversion algorithm.                                                                             |
+
+Palette IDs are `monochrome`, `pycolors`, `lime-carbon`, `arctic-cyan`,
+`coral-signal`, `indigo-ledger`, `emerald-console`, `graphite-atlas`,
+`rose-atelier` and `amber-foundry`.
+
+Public types include `NativeColors`, `NativeColorScheme` (`light | dark`),
+`NativePaletteName`, `NativeRadiusPreference`, `NativeTypographyRole` and
+`NativeTextStyle`. Resolving system appearance, choosing platform fonts and
+retaining OS text scaling belong to the application. A rem baseline of 16 is
+used for numeric radius conversion; values are native logical units, not
+physical pixels.
+
+## Sources and generation
+
+- `tokens.css` remains the canonical public CSS source for `nativeColors`.
+- In the monorepo, `config/appearance-presets.json` is the canonical public-safe
+  appearance input. Generation copies it byte-for-byte to
+  `appearance.snapshot.json` for the standalone public mirror.
+- The snapshot is the delivered input when no monorepo exists. Its hash proves
+  retained provenance, not freshness against an unavailable upstream repository.
+- `native.scales.json` defines the added native spacing, typography, touch and
+  motion scales. Base radii come from CSS and appearance preferences.
+
+With Node 24, pnpm 10.32.1 and the declared development dependencies installed:
+
+```sh
+pnpm native:generate
+pnpm native:check
+pnpm lint
+pnpm types:check
+pnpm test
+pnpm build
 ```
 
-You're done ✅\
-All semantic variables are now available globally.
+Do not edit `native.js`, `native.d.ts`, `native.provenance.json` or the appearance
+snapshot by hand. Generation is deterministic, including formatting. The check
+command fails on stale output or unsupported CSS color syntax. The package has
+no runtime dependencies; Prettier and TypeScript are development tools only.
 
-------------------------------------------------------------------------
+CSS aliases, OKLCH colors and the canonical OKLCH `color-mix` expressions are
+resolved at generation time. Output uses sRGB `#rrggbb` and `#rrggbbaa`; alpha
+is retained. Out-of-gamut colors reduce chroma at constant lightness and hue
+using 28 iterations, matching the repository's color-engine approach.
+This finite sRGB fallback does not promise identical wide-gamut browser output.
+The equations follow [CSS Color 4](https://www.w3.org/TR/css-color-4/) and
+[Oklab](https://bottosson.github.io/posts/oklab/).
 
-## 🌙 Dark Mode
+The provenance file includes source/artifact SHA-256 hashes and an opaque
+text/background contrast report. The current 264 measured role pairs meet
+4.5:1. Transparent borders, focus visibility, state combinations and actual
+native screen-reader/text-scaling behavior still require application validation.
+Color contrast alone does not qualify an accessible application.
 
-Tokens rely on a `.dark` class strategy.
+Tests cover conversion references, premultiplied alpha and hue interpolation,
+unchanged preset values, generation drift, deep immutability, the real npm
+tarball, independent ESM imports and strict TypeScript consumption without a
+DOM or framework library.
 
-``` html
-<html class="dark">
-```
+## Source-copy delivery and license
 
-Toggle it manually or via your theme provider.
+An authorized source-copy consumer can retain `native.js`, `native.d.ts`,
+`native.provenance.json` and `LICENSE`, with a producer record identifying the
+exact package/source version and file hashes. Verify those hashes when copying;
+there are no automatic updates. The CSS and snapshot remain available for
+auditing the original inputs.
 
-------------------------------------------------------------------------
-
-## 🧩 What's Inside
-
-### Core tokens
-
--   Radius scale
--   Background / foreground
--   Card / popover
--   Primary / secondary
--   Muted / accent
--   Destructive
--   Border / ring
-
-### Dark theme override
-
-Automatic semantic inversion using:
-
-``` css
-.dark { ... }
-```
-
-### Tailwind v4 Bridge
-
-The package exposes tokens directly to Tailwind:
-
-``` css
-@theme inline {
-  --color-background: var(--background);
-}
-```
-
-No extra config required.
-
-------------------------------------------------------------------------
-
-## 🏗 Recommended Architecture
-
-For monorepos:
-
-    packages/
-       tokens   ← single source of truth
-    apps/
-       marketing
-       saas
-       docs
-
-Avoid redefining colors inside apps --- import tokens instead.
-
-👉 This prevents **design drift** as your product ecosystem scales.
-
-------------------------------------------------------------------------
-
-## 🔄 Versioning
-
-This package follows **Semantic Versioning**:
-
--   `0.x` → iteration phase (breaking changes possible)
--   `1.0.0` → API stability guaranteed
--   Minor → new tokens
--   Patch → fixes / adjustments
-
-------------------------------------------------------------------------
-
-## 🧠 Pro Tip
-
-Treat tokens as **infrastructure**, not styling.
-
-Most teams refactor tokens too late ---\
-high-performing teams centralize them early.
-
-------------------------------------------------------------------------
-
-⚠️ This package is currently in early release (0.x).
-Breaking changes may occur until version 1.0.
-
-------------------------------------------------------------------------
-
-## 📄 License
-
-MIT
+This package is [MIT licensed](./LICENSE). Preserve the copyright and permission
+notice in copies or substantial portions of the package.
