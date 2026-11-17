@@ -1,5 +1,15 @@
 # @pycolors/tokens
 
+## 1.3.0
+
+### Minor Changes
+
+- b41a0e8: Add a framework-independent `@pycolors/tokens/native` ESM and TypeScript entry
+  point with light/dark sRGB colors, the ten canonical appearance presets and
+  native spacing, typography, radius, motion and touch-target scales. Preserve the
+  existing CSS entry point and colors. Include deterministic generation,
+  provenance, MIT licensing and package-consumer validation.
+
 ## 1.2.3
 
 ### Patch Changes
